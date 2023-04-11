@@ -1,10 +1,12 @@
+
+
 public class Testable {
     
     public double carMSRP;
     public int carYear;
     public String carManufacturer;
     public String carModel;
-    public String vehicleType;
+    public carType vehicleType;
     public boolean hadAccident;
      
 
@@ -27,23 +29,23 @@ public class Testable {
         this.hadAccident = hadAccident;
     }
 
-    public double calculateCurrentPrice(int currentYear){
+    public double calculateCurrentPrice(int currentYear) throws Testable.carException{
 
         int age = currentYear - (carYear - 1);
         double price;
         double modifier;
-        if(this.vehicleType.contentEquals(carType.TRUCK) || this.vehicleType.contentEquals(carType.SUV)){
+        if(this.vehicleType == carType.TRUCK || this.vehicleType == carType.SUV){
             modifier = 1.0;
         }
-        else if(this.vehicleType.contentEquals(carType.MOTORCYCLE)){
+        else if(this.vehicleType == carType.MOTORCYCLE){
             modifier = 0.9;
         } 
-        else if(this.vehicleType.contentEquals(carType.CAR) || this.vehicleType.contentEquals(carType.VAN)){
+        else if(this.vehicleType == carType.CAR || this.vehicleType == carType.VAN){
             modifier = 0.8;
         }
 
         if (age < 0){
-            throw Exception("Cannot have a future car.");
+            throw new carException("Cannot have a future car.");
         } 
         if(age < 3){
             price = this.carMSRP * (1 - (age * 0.08));
@@ -73,5 +75,9 @@ public class Testable {
         CAR, SUV, TRUCK, VAN, MOTORCYCLE; 
     }
 
-    
+    class carException extends Exception {
+        public carException(String message){
+            super(message);
+        }
+    }
 }

@@ -45,7 +45,7 @@ public class Testable {
             modifier = 0.8;
         }
 
-        if(this.hadAccident == true){
+        if(getHadAccident() == true){
             modifier = modifier / 2;
         }
 

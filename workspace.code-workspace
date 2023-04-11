@@ -8,6 +8,13 @@
 		}
 
 		
-	]
+	],
+	"settings": {
+		"java.dependency.packagePresentation": "hierarchical",
+		"java.project.referencedLibraries": [
+			"lib/**/*.jar",
+			"/Users/jeremiahbullock/Downloads/byte-buddy-1.14.4.jar"
+		]
+	}
 
 }

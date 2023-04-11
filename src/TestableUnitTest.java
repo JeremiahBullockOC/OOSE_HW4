@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class TestableUnitTest {
@@ -61,6 +62,22 @@ public class TestableUnitTest {
 
     @Test
     public void testableMockTest(){
+
+        Testable mockedTestable = mock(Testable.class);
+        when(mockedTestable.findCurrentPriceFromUser()).thenReturn(1400.0);
+        when(mockedTestable.findCurrentDepreciationPercent(0)).thenReturn(1337.0);
+        when(mockedTestable.getHadAccident()).thenReturn(true);
+        assertTrue(mockedTestable.getHadAccident());
+        mockedTestable.findCurrentDepreciationPercent(111);
+
+        assertEquals(mockedTestable.findCurrentPriceFromUser(), 1400.00, 0.01);
+        assertEquals(mockedTestable.findCurrentDepreciationPercent(0), 1337.00, 0.01);
+        verify(mockedTestable, times(1)).getHadAccident();
+        verify(mockedTestable).findCurrentDepreciationPercent(0);
+        verify(mockedTestable).findCurrentDepreciationPercent(111);
+
+        
+        
     }
 
 

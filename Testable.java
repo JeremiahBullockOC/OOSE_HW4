@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 public class Testable {
     
@@ -32,8 +32,8 @@ public class Testable {
     public double calculateCurrentPrice(int currentYear) throws Testable.carException{
 
         int age = currentYear - (carYear - 1);
-        double price;
-        double modifier;
+        double price = 0;
+        double modifier = 0;
         if(this.vehicleType == carType.TRUCK || this.vehicleType == carType.SUV){
             modifier = 1.0;
         }
@@ -59,7 +59,30 @@ public class Testable {
     }
 
     public double findCurrentDepreciationPercent(int currentYear){
-        return calculateCurrentPrice(currentYear)/this.carMSRP;
+        try {
+            return calculateCurrentPrice(currentYear)/this.carMSRP;
+        } catch(Exception e){
+            return -0.01;
+        }
+    }
+
+    public double findCurrentPriceFromUser(){
+
+        System.out.println("Please Enter Current Year");
+        Scanner sc = new Scanner(System.in);
+        int year = sc.nextInt();
+        sc.close();
+        try {
+            return calculateCurrentPrice(year);
+        } catch(Exception e){
+            return -0.01;
+        }
+
+
+
+        
+
+        // Add user input. This we will mock.
     }
 
     public void setHadAccident(boolean setHadAccident){

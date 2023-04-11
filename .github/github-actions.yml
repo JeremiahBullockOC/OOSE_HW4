@@ -1,0 +1,16 @@
+name: HW4 Github Actions
+run-name: ${{ github.actor }} is running a workflow for HW4
+on: [push]
+jobs:
+  HW4-Workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This is not a drill. Beginning the workflow."
+      - run: echo "We're not just going to repeat the tutorial. Entirely..."
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '13'
+      - run : npm install -g bats
+      - run : bats -v
+

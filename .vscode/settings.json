@@ -1,0 +1,7 @@
+{
+    "java.test.config": {
+        "java.project.sourcePaths":["src"],
+        "java.project.outputPath": "bin",
+        "java.project.referenceLibraries":["lib/**/*.jar"],
+    }
+}

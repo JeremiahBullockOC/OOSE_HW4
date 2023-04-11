@@ -1,3 +1,4 @@
+package src;
 import java.util.Scanner;
 
 public class Testable {
@@ -42,6 +43,10 @@ public class Testable {
         } 
         else if(this.vehicleType == carType.CAR || this.vehicleType == carType.VAN){
             modifier = 0.8;
+        }
+
+        if(this.hadAccident == true){
+            modifier = modifier / 2;
         }
 
         if (age < 0){
@@ -94,7 +99,7 @@ public class Testable {
         return this.hadAccident;
     }
 
-    private enum carType { 
+    public enum carType { 
         CAR, SUV, TRUCK, VAN, MOTORCYCLE; 
     }
 

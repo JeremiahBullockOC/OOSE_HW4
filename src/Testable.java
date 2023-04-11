@@ -53,11 +53,14 @@ public class Testable {
             throw new carException("Cannot have a future car.");
         } 
         if(age < 3){
-            price = this.carMSRP * (1 - (age * 0.08));
+            price = carMSRP * (1 - (age * 0.08));
         } else if (age < 7) {
-            price = this.carMSRP * (1 - (3 * 0.08) - ((age - 3)* 0.12));
+            price = carMSRP * (1 - (age * 0.1));
         } else if (age > 6){
-            price = this.carMSRP * (1 - (3 * 0.08) - ((age - 3)* 0.12) - ((age-6) * 0.05));
+            price = carMSRP * (1 - 0.5 - (age * 0.03));
+        }
+        if(price <= 0){
+            price = 1000;
         }
         return price * modifier;
 

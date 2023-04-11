@@ -13,4 +13,9 @@ jobs:
           node-version: '13'
       - run : npm install -g bats
       - run : bats -v
+      - run: echo "Code that really isn't useful to my project."
+      - run: echo "There would be a lot more that could be done if this project were built with gradle or maven."
+      - run: echo "If I had done that this section could have my unit test running here."
+
+
 
